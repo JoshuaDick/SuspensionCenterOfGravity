@@ -6,7 +6,7 @@ import ctypes as ct
 import platform
 
 def dark_title_bar(window):
-    print(platform.platform())
+    #print(platform.platform())
     if 'Windows' in platform.platform():
         window.update()
         set_window_attribute = ct.windll.dwmapi.DwmSetWindowAttribute
