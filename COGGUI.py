@@ -3,15 +3,17 @@ from tkinter import messagebox
 from PIL import Image, ImageTk
 import math
 import ctypes as ct
+import platform
 
 def dark_title_bar(window):
-    window.update()
-    set_window_attribute = ct.windll.dwmapi.DwmSetWindowAttribute
-    get_parent = ct.windll.user32.GetParent
-    hwnd = get_parent(window.winfo_id())
-    value = 2
-    value = ct.c_int(value)
-    set_window_attribute(hwnd, 20, ct.byref(value), 4)
+    if (platform.platform() == 'Windows'):
+        window.update()
+        set_window_attribute = ct.windll.dwmapi.DwmSetWindowAttribute
+        get_parent = ct.windll.user32.GetParent
+        hwnd = get_parent(window.winfo_id())
+        value = 2
+        value = ct.c_int(value)
+        set_window_attribute(hwnd, 20, ct.byref(value), 4)
 
 def calculate():
     try:
